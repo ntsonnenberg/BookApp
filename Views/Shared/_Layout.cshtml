@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+
+<!--This is the base/layout web page for the application, it just includes the title, pads the side of the page with boostrap, and has razor code to render the index web page-->
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="ml-3" style="padding-left:30px; margin-top:40px">
+        @RenderBody()
+    </div>
+</body>
+</html>

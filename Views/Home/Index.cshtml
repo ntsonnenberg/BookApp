@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Assignment 5";
+}
+
+@model IQueryable<Book>
+
+<!--This is the main web page of the application, it displays the books stored in the database with all the attributes associated with a book-->
+
+<header style="color:darkorange">
+    <h1>Amazon Book List</h1>
+</header>
+
+@foreach (var x in Model)
+{
+    <div class="ml-5">
+        <div class="d-flex flex-column">
+            <h4>Title: @x.Title</h4>
+            <div class="ml-4">
+                <p>Author First Name: @x.AuthorFirstName</p>
+                <p>Author Last Name: @x.AuthorLastName</p>
+                <p>Publisher: @x.Publisher</p>
+                <p>ISBN: @x.ISBN</p>
+                <p>Classification: @x.Classification</p>
+                <p>Category: @x.Category</p>
+                <p>Price: $@x.Price</p>
+            </div>
+            <br />
+            <br />
+        </div>
+    </div>
+}
