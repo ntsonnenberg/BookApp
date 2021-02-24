@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace BookApp.Models
 {
-    //This is the Book class, it includes a title, author first name, author last name, publisher, ISBN, classification, category, and price, all of these fields are requried for input
-    //The Book class also has a BookId that is a primary key, so it is automagenerated when a new Book is created
-    //The ISBN has to specifically be inputted in this format: "###-##########"
+    /**
+     * This is the Book class, it includes a title, author first name, author last name, publisher, ISBN, classification, category, and price, all of these fields are requried for input
+     * The Book class also has a BookId that is a primary key, so it is automagenerated when a new Book is created
+     * The ISBN has to specifically be inputted in this format: "###-##########"
+     */
     public class Book
     {
         [Key]
@@ -30,5 +32,7 @@ namespace BookApp.Models
         public string Category { get; set; }
         [Required]
         public double Price { get; set; }
+        [Required]
+        public int Pages { get; set; }
     }
 }

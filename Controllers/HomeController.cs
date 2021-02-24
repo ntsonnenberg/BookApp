@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using BookApp.Models.ViewModels;
 
 namespace BookApp.Controllers
 {
@@ -13,6 +14,7 @@ namespace BookApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private IAmazonRepository _repository;
+        public int PageSize = 5;
 
         public HomeController(ILogger<HomeController> logger, IAmazonRepository repository)
         {
@@ -20,9 +22,26 @@ namespace BookApp.Controllers
             _repository = repository;
         }
 
-        public IActionResult Index()
+        /**
+         * This function renders the index page and takes a parameter of the page number the user is on
+         * It calculates which items from the list of books should be rendered based on the page number
+         */
+        public IActionResult Index(int page = 1)
         {
-            return View(_repository.Books);
+            return View(new BookListViewModel
+            {
+                Books = _repository.Books
+                    .OrderBy(b => b.BookId)
+                    .Skip((page - 1) * PageSize)
+                    .Take(PageSize)
+                ,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalNumItems = _repository.Books.Count()
+                }
+            });
         }
 
         public IActionResult Privacy()

@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace BookApp.Models
 {
-    //This is the SeedData class, it only has a method call EnsurePopulated in it
-    //The EnsurePopulated passes in a IApplicationBuilder as a parameter and uses that to create an instance of the database (BooksDBContext)
-    //if any changes have been made in the database, then the data will be migrated
-    //if there are no pending changes, then 10 of Professor Hilton's favorite books are created and added to the context and saved
+    /**
+     * This is the SeedData class, it only has a method call EnsurePopulated in it
+     * The EnsurePopulated passes in a IApplicationBuilder as a parameter and uses that to create an instance of the database (BooksDBContext)
+     * If any changes have been made in the database, then the data will be migratedIf there are no pending changes
+     * Then 10 of Professor Hilton's favorite books and 3 of my favorite books are created and added to the context and saved
+    */
     public class SeedData
     {
         public static void EnsurePopulated(IApplicationBuilder application)
@@ -36,7 +38,8 @@ namespace BookApp.Models
                         ISBN = "978-0451419439",
                         Classification = "Fiction",
                         Category = "Classic",
-                        Price = 9.95
+                        Price = 9.95,
+                        Pages = 1488
                     },
 
                     new Book
@@ -48,7 +51,8 @@ namespace BookApp.Models
                         ISBN = "978-0743270755",
                         Classification = "Non-Fiction",
                         Category = "Biography",
-                        Price = 14.58
+                        Price = 14.58,
+                        Pages = 944
                     },
 
                     new Book
@@ -60,7 +64,8 @@ namespace BookApp.Models
                         ISBN = "978-0553384611",
                         Classification = "Non-Fiction",
                         Category = "Biography",
-                        Price = 21.54
+                        Price = 21.54,
+                        Pages = 832
                     },
 
                     new Book
@@ -72,7 +77,8 @@ namespace BookApp.Models
                         ISBN = "978-0812981254",
                         Classification = "Non-Fiction",
                         Category = "Biography",
-                        Price = 11.61
+                        Price = 11.61,
+                        Pages = 864
                     },
 
                     new Book
@@ -84,7 +90,8 @@ namespace BookApp.Models
                         ISBN = "978-0812974492",
                         Classification = "Non-Fiction",
                         Category = "Historical",
-                        Price = 13.33
+                        Price = 13.33,
+                        Pages = 528
                     },
 
                     new Book
@@ -96,7 +103,8 @@ namespace BookApp.Models
                         ISBN = "978-0804171281",
                         Classification = "Fiction",
                         Category = "Historical Fiction",
-                        Price = 15.95
+                        Price = 15.95,
+                        Pages = 288
                     },
 
                     new Book
@@ -108,7 +116,8 @@ namespace BookApp.Models
                         ISBN = "978-1455586691",
                         Classification = "Non-Fiction",
                         Category = "Self-Help",
-                        Price = 14.99
+                        Price = 14.99,
+                        Pages = 304
                     },
 
                     new Book
@@ -120,7 +129,8 @@ namespace BookApp.Models
                         ISBN = "978-1455523023",
                         Classification = "Non-Fiction",
                         Category = "Self-Help",
-                        Price = 21.66
+                        Price = 21.66,
+                        Pages = 240
                     },
 
                     new Book
@@ -132,7 +142,8 @@ namespace BookApp.Models
                         ISBN = "978-1591847984",
                         Classification = "Non-Fiction",
                         Category = "Business",
-                        Price = 29.16
+                        Price = 29.16,
+                        Pages = 400
                     },
 
                     new Book
@@ -144,9 +155,49 @@ namespace BookApp.Models
                         ISBN = "978-0553393613",
                         Classification = "Fiction",
                         Category = "Thrillers",
-                        Price = 15.03
+                        Price = 15.03,
+                        Pages = 642
+                    },
+
+                    new Book
+                    {
+                        Title = "Harry Potter and the Deathly Hallows",
+                        AuthorFirstName = "J.K.",
+                        AuthorLastName = "Rowling",
+                        Publisher = "Bloomsbury Publishing",
+                        ISBN = "978-0545029377",
+                        Classification = "Fiction",
+                        Category = "Fantasy",
+                        Price = 31.49,
+                        Pages = 607
+                    },
+
+                    new Book
+                    {
+                        Title = "Percy Jackson: The Last Olympian",
+                        AuthorFirstName = "Rick",
+                        AuthorLastName = "Riordan",
+                        Publisher = "Disney Hyperion",
+                        ISBN = "978-1423101475",
+                        Classification = "Fiction",
+                        Category = "Fantasy",
+                        Price = 14.23,
+                        Pages = 381
+                    },
+
+                    new Book
+                    {
+                        Title = "The 4-Hour Workweek",
+                        AuthorFirstName = "Timothy",
+                        AuthorLastName = "Ferriss",
+                        Publisher = "Crown Publishing Group",
+                        ISBN = "978-0307353139",
+                        Classification = "Non-Fiction",
+                        Category = "Self-Help",
+                        Price = 14.29,
+                        Pages = 308
                     }
-                ); ;
+                );
 
                 context.SaveChanges();
             }

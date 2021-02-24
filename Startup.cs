@@ -55,11 +55,15 @@ namespace BookApp
 
             app.UseAuthorization();
 
+            //URLs use /P2, /P3, /P4, etc.
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    "pagination",
+                    "Books/P{page}",
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapDefaultControllerRoute();
             });
             SeedData.EnsurePopulated(app);
         }
