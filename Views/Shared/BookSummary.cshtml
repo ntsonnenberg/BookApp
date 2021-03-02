@@ -1,0 +1,27 @@
+﻿@model Book
+
+<!--This is the Book Summary web page
+    All the book cards are dynamically displayed here-->
+<div class="mr-5">
+    <div class="d-flex flex-column">
+        <div class="d-flex justify-content-center">
+            <div class="card card-outline-primary m-1 p-1 border border-warning" style="width:50%;">
+                <div class="card-header bg-warning">
+                    <h4>@Model.Title</h4>
+                </div>
+                <div class="card-body">
+                    <p>Author First Name: @Model.AuthorFirstName</p>
+                    <p>Author Last Name: @Model.AuthorLastName</p>
+                    <p>Publisher: @Model.Publisher</p>
+                    <p>ISBN: @Model.ISBN</p>
+                    <p>Classification: @Model.Classification</p>
+                    <p>Category: @Model.Category</p>
+                    <p>Pages: @Model.Pages</p>
+                    <p><span class="badge badge-warning">Price: $@Model.Price</span></p>
+                </div>
+            </div>
+        </div>            
+        <br />
+        <br />
+    </div>
+</div>

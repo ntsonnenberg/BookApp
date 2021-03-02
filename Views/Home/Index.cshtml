@@ -5,41 +5,42 @@
 @model BookListViewModel
 
 <!--This is the main web page of the application
-    it displays the books stored in the database with all the attributes associated with a book
+    It displays the books stored in the database with all the attributes associated with a book
+    It has built-in navigation menu to filter the books by category
     It also has navigation at the bottom with links to view other books dynamically with the same index web page-->
 
-<header style="color:darkorange">
-    <h1>Book List</h1>
-</header>
-
-@foreach (var x in Model.Books)
-{
-    <div class="ml-5">
+<div class="col-2">
+    <header style="color:darkorange">
         <div class="d-flex flex-column">
-            <div class="card card-outline-primary m-1 p-1 border border-warning" style="width:25%;">
-                <div class="card-header bg-warning">
-                    <h4>@x.Title</h4>
-                </div>
-                <div class="card-body">
-                    <p>Author First Name: @x.AuthorFirstName</p>
-                    <p>Author Last Name: @x.AuthorLastName</p>
-                    <p>Publisher: @x.Publisher</p>
-                    <p>ISBN: @x.ISBN</p>
-                    <p>Classification: @x.Classification</p>
-                    <p>Category: @x.Category</p>
-                    <p>Pages: @x.Pages</p>
-                    <p><span class="badge badge-warning">Price: $@x.Price</span></p>
-                </div>
+            <h1>Book List</h1>
+            <div class="d-flex flex-column">
+                <vc:navigation-menu />
             </div>
-            <br />
-            <br />
+        </div>
+    </header>
+</div>
+<br />
+<br />
+
+<div class="col-10">
+    <div class="mt-4" style="padding-top: 25px;">
+        <div class="mr-5">
+            @foreach (var x in Model.Books)
+            {
+                <partial name="BookSummary" model="x" />
+            }
+
+            <div class="ml-5" style="padding-left: 180px;">
+                <div page-model="@Model.PagingInfo"
+                     page-action="Index"
+                     page-url-category="Model.CurrentCategory"
+                     page-classes-enabled="true"
+                     page-class="btn"
+                     page-class-normal="btn-outline-dark"
+                     page-class-selected="btn-warning"
+                     class="btn-group pull-right m-1"></div>
+            </div>
         </div>
     </div>
-}
-
-<div class="ml-5">
-    <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
-         page-class-normal="btn-outline-dark"
-         page-class-selected="btn-warning"
-         class="btn-group pull-right m-1"></div>
 </div>
+

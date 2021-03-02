@@ -26,11 +26,12 @@ namespace BookApp.Controllers
          * This function renders the index page and takes a parameter of the page number the user is on
          * It calculates which items from the list of books should be rendered based on the page number
          */
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string category, int page = 1)
         {
             return View(new BookListViewModel
             {
                 Books = _repository.Books
+                    .Where(b => category == null || b.Category == category)
                     .OrderBy(b => b.BookId)
                     .Skip((page - 1) * PageSize)
                     .Take(PageSize)
@@ -39,8 +40,10 @@ namespace BookApp.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalNumItems = _repository.Books.Count()
-                }
+                    TotalNumItems = category == null ? _repository.Books.Count() : 
+                        _repository.Books.Where(x => x.Category == category).Count()
+                },
+                CurrentCategory = category
             });
         }
 

@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace BookApp.Models.ViewModels
 {
-    //The BookListViewModel class includes the an IEnumerble list of books and a PagingInfo property
+    //The BookListViewModel class includes the an IEnumerble list of books, a PagingInfo property, and a CurrentCategory property
     public class BookListViewModel
     {
         public IEnumerable<Book> Books { get; set; }
         public PagingInfo PagingInfo { get; set; }
-
+        public string CurrentCategory { get; set; }
     }
 }

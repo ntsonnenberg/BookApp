@@ -55,9 +55,30 @@ namespace BookApp
 
             app.UseAuthorization();
 
-            //URLs use /P2, /P3, /P4, etc.
+            /**
+             * first endpoint routes to the category and then the page number
+             * second endpoint routes to just the page number
+             * third endpoint routes to just the category
+             * fourth endpoint routes to Books, then /P2, /P3, /P4, etc.
+             * Fifth endpoint is the default route
+             */
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    "catpage",
+                    "{category}/{page:int}",
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    "page",
+                    "{page:int}",
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    "category",
+                    "{category}",
+                    new { Controller = "Home", action = "Index", page = 1 });
+
                 endpoints.MapControllerRoute(
                     "pagination",
                     "Books/P{page}",

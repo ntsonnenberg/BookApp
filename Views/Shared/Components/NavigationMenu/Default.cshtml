@@ -1,0 +1,21 @@
+﻿@model IEnumerable<string>
+
+<!--This is the Default webpage
+    The category navigation menu is displayed here-->
+<a class="btn btn-block @(ViewBag.SelectedCategory == null ? "btn-warning" : "btn-outline-dark")"
+    asp-action="Index"
+    asp-controller="Home"
+    asp-route-category="">
+    Home
+</a>
+
+@foreach(string category in Model)
+{
+    <a class="btn btn-block @(category == ViewBag.SelectedCategory ? "btn-warning" : "btn-outline-dark")"
+       asp-action="Index"
+       asp-controller="Home"
+       asp-route-category="@category"
+       asp-route-page="1">
+       @category
+    </a>
+}
