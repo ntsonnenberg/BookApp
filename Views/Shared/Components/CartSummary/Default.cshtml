@@ -1,0 +1,19 @@
+﻿@model Cart
+
+<!--This web page displays the cart summary in the navbar on the layout view page, 
+    it contains a link that routes the user to the web page that displays the cart-->
+<div class="">
+    @if (Model.Lines.Count() > 0)
+    {
+        <large class="navbar-text">
+            <b>Your cart:</b>
+            @Model.Lines.Sum(x => x.Quantity) items(s)
+            @Model.ComputeTotalSum().ToString("c")
+        </large>
+    }
+    <a class="btn btn-warning navbar-btn" 
+       asp-page="/Purchase" 
+       asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
+        <i class="fa fa-shopping-cart"></i>
+    </a>
+</div>
